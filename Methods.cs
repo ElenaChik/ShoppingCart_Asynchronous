@@ -115,6 +115,11 @@ public static class Methods
         }
     }
 
+    public static async Task Logout()
+    {
+        await LogoutSetup();
+    }
+
     public static User Validate(User temp)
     {
         foreach(User user in User.Users)
@@ -229,5 +234,69 @@ public static class Methods
         }
         Print("Login Complete!");
     }
+
+
+    //logOut process
+    public static async Task<string> CleanProfileSetups()
+    {
+        Print("Profile setup, deleting your profile setups...");
+        await Task.Delay(4000);
+        Print("Deleting profile setups from database...");
+        await Task.Delay(4000);
+        Print("Profile cleaned");
+        await Task.Delay(4000);
+        return "Profile cleaned!";
+    }
+    public static async Task<string> EmptyCart()
+    {
+        Print("Cart empting, checking for saved cart items...");
+        await Task.Delay(4000);
+        Print("Deleting items from cart...");
+        await Task.Delay(4000);
+        Print("Cart cleaned ready");
+        await Task.Delay(4000);
+        return "Cart is empty!";
+    }
+    public static async Task<string> RestoreItemsToStock()
+    {
+        Print("Item restoring to stock, Connecting to database...");
+        await Task.Delay(4000);
+        Print("Returning all items to stock");
+        await Task.Delay(4000);
+        Print("Items loaded to stock database");
+        await Task.Delay(4000);
+        return "Items in stock!";
+    }
+
+    public static async Task LogoutSetup()
+    {
+        var cleanProfileSetups = CleanProfileSetups();
+        var emptyCart = EmptyCart();
+        var restoreItems = RestoreItemsToStock();
+
+
+        var logoutTasks = new List<Task> { cleanProfileSetups, emptyCart, restoreItems };
+        while (logoutTasks.Count > 0)
+        {
+            Task finishedTask = await Task.WhenAny(logoutTasks);
+            if (finishedTask == cleanProfileSetups)
+            {
+                Print("Profile cleaned!");
+            }
+            else if (finishedTask == emptyCart)
+            {
+                Print("Cart is empty!");
+            }
+            else if (finishedTask == restoreItems)
+            {
+                Print("Items restoked!");
+            }
+            await finishedTask;
+            logoutTasks.Remove(finishedTask);
+        }
+        Print("LogOut Complete!");
+    }
+
+
 }
 

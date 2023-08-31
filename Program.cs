@@ -13,7 +13,7 @@ class Program
     //1. display prompt for login/ Register/logout
     static async Task Main(string[] args)
     {
-        Linq.runLinq();
+        //Linq.runLinq(); // task with LINQ query
 
         string selection;
         do
@@ -33,6 +33,8 @@ class Program
             }
 
         } while (selection != "3");//logout
+
+        if (selection == "3") await Logout();
 
         //2.During login, getting your profile ready, getting your cart initialized, getting items ready for display
         // after login,prompt user to view cart, add items to cart,
