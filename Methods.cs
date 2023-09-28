@@ -11,6 +11,26 @@ public static class Methods
     static Customer? customer;
     static Admin? admin;
 
+    public static void SearchItem()
+    {
+        Print("Write item Name ");
+        var count = 0;
+        string searchName = Console.ReadLine();
+
+        foreach (Item item in Item.Items)
+            if (item.Name == searchName)
+            {
+                Print("Your item is: " + item.Name + " price: " + item.Price + "$");
+                count++;
+                break;
+            }
+           
+            if (count == 0) 
+            {
+                Print("Your item is not found");
+            }
+    }
+
     public static void Print(string text)
     {
         Console.WriteLine(text);
@@ -87,6 +107,9 @@ public static class Methods
                         case "3"://remove items
                             DeleteItem();
                             break;
+                        case "4"://search item
+                            SearchItem();
+                            break;
                     }
                 }
                 else
@@ -102,6 +125,9 @@ public static class Methods
                             break;
                         case "2"://add items to cart
                             AddToCart();
+                            break;
+                        case "3"://search item
+                            SearchItem();
                             break;
                     }
                 }     

@@ -5,8 +5,8 @@ namespace AdvancedShoppingCart;
 public class Item
 {
     public static List<Item> Items = ItemList();
-    string Name { get; set; }
-    double Price { get; set; }
+    public string Name { get; set; }
+    public double Price { get; set; }
 
     public Item(string tempName, double tempPrice)
     {

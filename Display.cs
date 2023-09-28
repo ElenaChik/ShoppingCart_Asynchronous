@@ -25,6 +25,7 @@ public static class Display
         "0. back to previous menu\n" +
         "1. View cart\n" +
         "2. Add items to cart\n" +
+        "3. Search item \n" +
         "------------------------------------------");
     }
     public static void ALoggedinPage()//admin logged in page
@@ -36,6 +37,7 @@ public static class Display
         "1. View items\n" +
         "2. Create new item\n" +
         "3. Delete items\n" +
+        "4. Search item \n" +
         "------------------------------------------");
     }
     public static void ItemsListing()
