@@ -30,9 +30,10 @@ public class User
 
     public static List<User> CreateUsers()
     {
-        return new List<User> {(new Admin("Chrysa", "1234")),
-            (new Customer("Jack", "5678")),
-            (new Customer("Jill", "9012"))};
+        return new List<User> {
+            new Admin("Chrysa", "1234"),
+            new Customer("Jack", "5678"),
+            new Customer("Jill", "9012")};
     }
 
     public bool compareUser(User temp)//convert to lambda expression
